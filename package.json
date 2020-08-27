@@ -1,0 +1,19 @@
+{
+  "name": "test2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "nyc ava",
+    "report": "nyc report --reporter=html"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "ava": "0.25.0",
+    "nyc": "^15.1.0"
+  }
+}
