@@ -30,7 +30,7 @@ calculateAmountByPlayTypeAndAudience = (playType, audience) => {
 const calculateData = (performances, plays) => {
   let totalAmount = 0;
   let volumeCredits = 0;
-  let str = '';
+  let playItemsStatementInfo = '';
   for (let perf of performances) {
     const play = plays[perf.playID];
 
@@ -42,11 +42,11 @@ const calculateData = (performances, plays) => {
     // add extra credit for every ten comedy attendees
     if ('comedy' === play.type) volumeCredits += Math.floor(perf.audience / 5);
     //print line for this order
-    str += ` ${play.name}: ${format(thisAmount / 100)} (${perf.audience} seats)\n`;
+    playItemsStatementInfo += ` ${play.name}: ${format(thisAmount / 100)} (${perf.audience} seats)\n`;
     totalAmount += thisAmount;
   }
   return {
-    str,
+    playItemsStatementInfo,
     totalAmount,
     volumeCredits
   }
