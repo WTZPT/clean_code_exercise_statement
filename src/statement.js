@@ -51,19 +51,23 @@ function calculateAmount(performances, plays) {
   }
 }
 
-function statement(invoice, plays) {
+function generatStatement(name,str, totalAmount, volumeCredits) {
+  let result = `Statement for ${name}\n`;
+  result += str;
+  result += `Amount owed is ${format(totalAmount / 100)}\n`;
+  result += `You earned ${volumeCredits} credits \n`;
+  return result;
+}
 
-  let result = `Statement for ${invoice.customer}\n`;
+function statement(invoice, plays) {
 
   let {
     str,
     totalAmount,
     volumeCredits
   } = calculateAmount(invoice.performances, plays)
-  result += str;
-  result += `Amount owed is ${format(totalAmount / 100)}\n`;
-  result += `You earned ${volumeCredits} credits \n`;
-  return result;
+
+  return generatStatement(invoice.customer,str, totalAmount, volumeCredits);
 }
 
 module.exports = {
